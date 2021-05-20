@@ -1,0 +1,60 @@
+﻿5/20 ---------
+    * FIXED the first letter block: my .ToLower() was not early enough, so the capital letter was cut off
+    * FIXED total by changing the type of dictionary AND using a list with LINQ methods .Sum()
+        * will need to provide these tips (especially the LINQ and .Sum() method)
+            https://www.dotnetperls.com/sum
+            https://docs.microsoft.com/en-us/dotnet/api/system.convert.tochar?view=net-5.0
+        
+    * I have the basic score template, now I need to add the other 2.
+    * BLOCK/QUESTION: do I need to be using methods?  Can I turn this into a method?
+        * JS is all about those functions, so this should probably be too.  Maybe?
+        * at the time of this assignment we are: NOT in classes, so methods would be static
+
+    NEXT STEPS:
+    * try making a method for scoring?
+        *returning an int value, so this could work...
+Done -> * take user input for word  
+    * create score options:
+        0 - Scrabble: The traditional scoring algorithm.
+        1 - Simple Score: Each letter is worth 1 point.
+        2 - Bonus Vowels: Vowels are worth 3 pts, and consonants are 1 pt.
+            (currently these are held in an array)
+    * create exit strategy: "STOP" (if or while? tied in with input)
+  
+
+5/19 ========
+    * okay, don't need the oldScoreKeeper to actually work.  Need to USE it as is to flip the dictionary
+    * will need to split the string, remove the commas, and repurpose as individual keys
+
+    * Leaving off:  was able to reverse the dictionary
+        * newScoreKeeper is holding the switched oSK
+        * able to call nSK and compare to test word
+        * BLOCK:  not picking up first letter of testWord YET.  not able to total up score YET
+
+
+
+
+5/18 ---------
+    * created dictionary object with 2 KVPs to test
+    * able to loop through the values using nested foreach when all in Main method
+    * but not able to tally keys
+        ## try: what if placed keys in array, then they become ints not keys, use for loop accumulator?
+
+
+    * Goals:
+        * create dictionary -- <int, string>
+            * what about a dictionry of lists??
+        * search dictionary for desired char -- method: Contains Value
+        * update score -- use key to update score variable
+
+    ^^ https://stackoverflow.com/questions/47893595/easiest-way-to-store-alphabet-in-dictionary-in-c-sharp
+
+    ^^ https://zetcode.com/csharp/dictionary/
+        ^^ how to work with a list in a dictionary (summing values, but perhaps could work with keys??)
+
+    ^^ https://stackoverflow.com/questions/1276763/how-do-i-get-the-list-of-keys-in-a-dictionary
+        ^^ what if we threw the chars into a list, then iterate over the list?  but what about the keys?????
+
+    ^^ https://stackoverflow.com/questions/60031854/populate-new-dictionary-from-old-dictionary
+        ^^ how to populate old dict into new one
+        ^^ not sure if this will work, gotta have unique keys. yup
