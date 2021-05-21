@@ -1,6 +1,8 @@
 ﻿5/21 =========
     * Created user promts (select algorithm, enter word, exit strategy)
         * used if/else blocks
+    * Created way to total up points in 1st score pattern (scrabble scores) using loop and accumulator
+        * remove LINQ .Sum() method - now don't have to worry about this! :Ds
     BLOCK: only runs once
         * would classes for each alg allow me to keep going until i type stop??
         * OR could a while loop be used to repeatedly call my selected method (even if static?)

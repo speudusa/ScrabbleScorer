@@ -76,7 +76,12 @@ namespace ScrabScore
                         }
                     }
 
-                    int totalScore = letterScore.Sum();                             //calc total using LINQ method *will need to provide*               
+                    //UPDATING OUR SCORE
+                    int totalScore = 0;                                             //initial score, updated as we loop through letterScore list
+                    foreach (int i in letterScore)                                  //loop through the list
+                    {
+                        totalScore += i;                                            //update total score by adding each list item
+                    }
 
                     Console.WriteLine($"Your word: {inputWord} is worth {totalScore}");  //print word and score
 
@@ -122,21 +127,27 @@ namespace ScrabScore
 
             }//if
 
-
             //Thinking of a way to call method again
             //do i need to be able to do this or will one pass through each be enough??
             Console.WriteLine("Would you like to enter another word? Y/N");
             string again = Console.ReadLine();
-            if(again.ToUpper() == "Y")
+            if (again.ToUpper() == "Y")
             {
                 Console.WriteLine("Cool. Cool. Cool. We're working on that");
                 //call method again?
                 //prompt, to pick method?? or use same method??
                 //new word passes to method
-                    //constructor would take one method? for simple and bonus vowels
-                        //what bout traditional scorer?  could make oldSK a const???  can i use a const between classes????
+                //constructor would take one method? for simple and bonus vowels
+                //what bout traditional scorer?  could make oldSK a const???  can i use a const between classes????
             }
-            //else thanks for playing
+            else if (again.ToUpper() == "N")
+            {
+                Console.WriteLine("Thank you for playing!");
+            }
+            else
+            {
+                Console.WriteLine("Incorret input provided");
+            }
 
 
         }//MAIN
