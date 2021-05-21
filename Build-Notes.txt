@@ -10,6 +10,7 @@
         * what about classes?
         * what about static methods? - list to hold output???
         * sounds like we need a test branch! :)
+            *new GH repo created and this version is the main branch
 
 
 5/20 ---------

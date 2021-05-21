@@ -125,7 +125,7 @@ namespace ScrabScore
 
             //Thinking of a way to call method again
             //do i need to be able to do this or will one pass through each be enough??
-            Console.WriteLine("Would you like to enter another word agian? Y/N");
+            Console.WriteLine("Would you like to enter another word? Y/N");
             string again = Console.ReadLine();
             if(again.ToUpper() == "Y")
             {
