@@ -1,12 +1,26 @@
-﻿5/20 ---------
-    * FIXED the first letter block: my .ToLower() was not early enough, so the capital letter was cut off
-    * FIXED total by changing the type of dictionary AND using a list with LINQ methods .Sum()
+﻿5/21 =========
+    * Created user promts (select algorithm, enter word, exit strategy)
+        * used if/else blocks
+    BLOCK: only runs once
+        * would classes for each alg allow me to keep going until i type stop??
+        * OR could a while loop be used to repeatedly call my selected method (even if static?)
+            * maybe put my scores into a list, so that i can keep adding?
+
+    PLANS:
+        * what about classes?
+        * what about static methods? - list to hold output???
+        * sounds like we need a test branch! :)
+
+
+5/20 ---------
+    FIXED the first letter block: my .ToLower() was not early enough, so the capital letter was cut off
+    FIXED total by changing the type of dictionary AND using a list with LINQ methods .Sum()
         * will need to provide these tips (especially the LINQ and .Sum() method)
             https://www.dotnetperls.com/sum
             https://docs.microsoft.com/en-us/dotnet/api/system.convert.tochar?view=net-5.0
-        
-    * I have the basic score template, now I need to add the other 2.
-    * BLOCK/QUESTION: do I need to be using methods?  Can I turn this into a method?
+
+Done -> * I have the basic score template, now I need to add the other 2.
+    BLOCK/QUESTION: do I need to be using methods?  Can I turn this into a method?
         * JS is all about those functions, so this should probably be too.  Maybe?
         * at the time of this assignment we are: NOT in classes, so methods would be static
 
