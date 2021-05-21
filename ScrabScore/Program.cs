@@ -20,19 +20,19 @@ namespace ScrabScore
 
         public static void Main(string[] args)
         {
-            //step 1: take old score keeper and flip it (ie: key => value; value => key)
+            //bool to trigger while loop
+            bool done = false;
 
-            Dictionary<char, int> newScoreKeeper = new Dictionary<char, int>();
 
+        //DICTIONARY UPDATE
+            Dictionary<char, int> newScoreKeeper = new Dictionary<char, int>();     //step 1: take old score keeper and flip it (ie: key => value; value => key)
 
-            //Loop that will let us use the new dictionary
             foreach (KeyValuePair<int, string> entry in oldScoreKeeper)
             {
                 string strValue = entry.Value;
                 string[] strChar = strValue.Split(", ");
 
-                //when updataing new dictionary, convert to char (makes everything SO MUCH easier)
-                foreach (string str in strChar)
+                foreach (string str in strChar)                                     //when updataing new dictionary, convert to char (makes everything SO MUCH easier)
                 {
                     char ch = Convert.ToChar(str);
                     newScoreKeeper.Add(ch, entry.Key);
@@ -40,115 +40,103 @@ namespace ScrabScore
             }
 
 
-            //SELECT WHICH METHOD
+        //SELECT WHICH METHOD
             Console.WriteLine("Your Scrabble Scorer App!\n How would you like to score your points today?" +
                 "\n 1: Scrabble - the traditional scoring method" +
                 "\n 2: Simple Score - each letter is worth 1 point " +
                 "\n 3: Bonus Vowels - vowels are worth 3 points; consonants are worth 1 point");
             string inputPoints = Console.ReadLine();
-
+            
             Console.WriteLine("Please enter your word.  If you with to exit the app, type 'STOP'.");
-            string inputWord = Console.ReadLine();
-
-            if (inputWord != "STOP")
+            
+            while (!done)
             {
-                string lowerWord = inputWord.ToLower();                          //reducing case issues
+                
+                string inputWord = Console.ReadLine();
 
-                List<string> userWords = new List<string>();
-                userWords.Add(lowerWord);
-
-            if (inputPoints == "1")
+                if (inputWord == "STOP")                                            //start with this RIGHT AWAY
                 {
-                    //list to hold scores based on nSK values  -- KEEP AVAILABLE FOR ALL SCORE ALGORITHMS
-                    List<int> letterScore = new List<int>();
+                    Console.WriteLine("Thank you for playing.");
+                    done = true;
+                }
+                else
+                { 
+                    string lowerWord = inputWord.ToLower();                          //reducing case issues
 
+                    List<string> userWords = new List<string>();
+                    userWords.Add(lowerWord);
 
-
-                    //SCRABBLE SCORE
-                    foreach (KeyValuePair<char, int> score in newScoreKeeper)       //loop through dict
+                    if (inputPoints == "1")
                     {
-                        foreach (char ch in lowerWord)                              //loop through word
+                        //list to hold scores based on nSK values  -- KEEP AVAILABLE FOR ALL SCORE ALGORITHMS
+                        List<int> letterScore = new List<int>();
+
+
+
+                //SCRABBLE SCORE
+                        foreach (KeyValuePair<char, int> score in newScoreKeeper)       //loop through dict
                         {
-                            if (score.Key == ch)                                    //look for match key
+                            foreach (char ch in lowerWord)                              //loop through word
                             {
-                                letterScore.Add(score.Value);                       //update list with match value
+                                if (score.Key == ch)                                    //look for match key
+                                {
+                                    letterScore.Add(score.Value);                       //update list with match value
+                                }
                             }
                         }
+
+                        //UPDATING OUR SCORE
+                        int totalScore = 0;                                             //initial score, updated as we loop through letterScore list
+                        foreach (int i in letterScore)                                  //loop through the list
+                        {
+                            totalScore += i;                                            //update total score by adding each list item
+                        }
+
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
+                        Console.WriteLine($"Your word: {inputWord} is worth {totalScore}");  //print word and score
+                        Console.ResetColor();
+                        Console.WriteLine("Please enter your word.  If you with to exit the app, type 'STOP'.");
                     }
-
-                    //UPDATING OUR SCORE
-                    int totalScore = 0;                                             //initial score, updated as we loop through letterScore list
-                    foreach (int i in letterScore)                                  //loop through the list
-                    {
-                        totalScore += i;                                            //update total score by adding each list item
-                    }
-
-                    Console.WriteLine($"Your word: {inputWord} is worth {totalScore}");  //print word and score
-
-                }
 
                 //SIMPLE SCORE
-                else if (inputPoints == "2")
-                {
-                    int totalScore = 0;
-                    foreach (char ch in lowerWord)
+                    else if (inputPoints == "2")
                     {
-                        totalScore += 1;
-                    }
-                    Console.WriteLine($"Your word: {inputWord} is worth {totalScore}");  //print word and score
-                }
-
-                //BONUS VOWELS
-                else if (inputPoints == "3")
-                {
-                    int totalScore = 0;
-                    foreach (char ch in lowerWord)
-                    {
-                        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
-                        {
-                            totalScore += 3;
-                        }
-                        else
+                        int totalScore = 0;
+                        foreach (char ch in lowerWord)
                         {
                             totalScore += 1;
                         }
-
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
+                        Console.WriteLine($"Your word: {inputWord} is worth {totalScore}");  //print word and score
+                        Console.ResetColor();
+                        Console.WriteLine("Please enter your word.  If you with to exit the app, type 'STOP'.");
                     }
-                    Console.WriteLine($"Your word: {inputWord} is worth {totalScore}");
 
-                }
+                    //BONUS VOWELS
+                    else if (inputPoints == "3")
+                    {
+                        int totalScore = 0;
+                        foreach (char ch in lowerWord)
+                        {
+                            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+                            {
+                                totalScore += 3;
+                            }
+                            else
+                            {
+                                totalScore += 1;
+                            }
 
-                else
-                {
-                    Console.WriteLine("Thank you for playing.");
-                }
+                        }
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
+                        Console.WriteLine($"Your word: {inputWord} is worth {totalScore}");  //print word and score
+                        Console.ResetColor();
+                        Console.WriteLine("Please enter your word.  If you with to exit the app, type 'STOP'.");
+                    }
 
 
-
-            }//if
-
-            //Thinking of a way to call method again
-            //do i need to be able to do this or will one pass through each be enough??
-            Console.WriteLine("Would you like to enter another word? Y/N");
-            string again = Console.ReadLine();
-            if (again.ToUpper() == "Y")
-            {
-                Console.WriteLine("Cool. Cool. Cool. We're working on that");
-                //call method again?
-                //prompt, to pick method?? or use same method??
-                //new word passes to method
-                //constructor would take one method? for simple and bonus vowels
-                //what bout traditional scorer?  could make oldSK a const???  can i use a const between classes????
-            }
-            else if (again.ToUpper() == "N")
-            {
-                Console.WriteLine("Thank you for playing!");
-            }
-            else
-            {
-                Console.WriteLine("Incorret input provided");
-            }
-
+                }//if/else
+            }//while
 
         }//MAIN
     }//class

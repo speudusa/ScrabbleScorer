@@ -4,6 +4,7 @@
     * Created way to total up points in 1st score pattern (scrabble scores) using loop and accumulator
         * remove LINQ .Sum() method - now don't have to worry about this! :Ds
     BLOCK: only runs once
+        >>> https://social.msdn.microsoft.com/Forums/vstudio/en-US/b23f784c-e5f9-4c06-baf7-aa0b3cb8254a/is-there-a-code-where-you-can-restart-a-program?forum=csharpgeneral
         * would classes for each alg allow me to keep going until i type stop??
         * OR could a while loop be used to repeatedly call my selected method (even if static?)
             * maybe put my scores into a list, so that i can keep adding?
